@@ -21,7 +21,8 @@ import {
 })
 export class AppComponent implements OnInit {
   // 拍攝的相片
-  cppatureImage: string;
+  cppatureImage: string =
+    'https://images.unsplash.com/photo-1508311603478-ce574376c3cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3542&q=80';
 
   // 是否顯示設定 drawer
   isShowSettingDrawer = false;
@@ -100,5 +101,8 @@ export class AppComponent implements OnInit {
 
   showSettingDrawer(isOpen: boolean): void {
     this.isShowSettingDrawer = isOpen;
+
+    // 更新浮水印文字
+    this.watermakrTextArr = [this.text1, this.text2];
   }
 }

@@ -13,7 +13,6 @@
 .upper-area {
   width: 100vw;
   height: 70vh;
-  border: 2px solid green;
   padding: 20px;
 
   display: flex;
@@ -22,14 +21,14 @@
   align-items: center;
 }
 
+.setting-btn-area {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
 .setting-drawer-area {
   width: 100%;
-
-  button {
-    height: 43px;
-    border-radius: 10px;
-    font-size: 15px;
-  }
 
   @mixin placeholder-color($color) {
     &::-webkit-input-placeholder {
@@ -154,4 +153,15 @@
       }
     }
   }
+}
+
+button {
+  height: 43px;
+  font-size: 15px;
+  box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  width: 100vw;
+  padding: 24px;
 }

@@ -20,3 +20,10 @@
   height: 100%;
   object-fit: contain;
 }
+
+
+.float-shadow {
+  background-color: #fff;
+  box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
