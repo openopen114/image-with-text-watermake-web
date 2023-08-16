@@ -14,7 +14,6 @@ import {
   Validators,
 } from '@angular/forms';
 
-
 import * as moment from 'moment';
 
 @Component({
@@ -53,8 +52,9 @@ export class AppComponent implements OnInit {
     // console.log('拍照');
     // await this.defineCustomElementsPromise();
     const image = await Camera.getPhoto({
-      quality: 68,
+      quality: 80,
       allowEditing: true,
+      correctOrientation: true,
       height: 1500,
       width: 1500,
       resultType: CameraResultType.DataUrl,
@@ -91,7 +91,7 @@ export class AppComponent implements OnInit {
     const captureElement: HTMLElement = document.querySelector('#capture');
 
     htmlToImage.toPng(captureElement).then(function (dataUrl) {
-      download(dataUrl, `pic_${moment().format("YYYYMMDD_HHmmss")}.png`);
+      download(dataUrl, `pic_${moment().format('YYYYMMDD_HHmmss')}.png`);
     });
   }
 
