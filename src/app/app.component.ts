@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   Camera,
   CameraResultType,
@@ -20,19 +20,24 @@ import {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  workerImage: string;
-  validateForm!: UntypedFormGroup;
+  // 拍攝的相片
+  cppatureImage: string;
+
+  // 是否顯示設定 drawer
+  isShowSettingDrawer = false;
+
+  // 浮水印文字 1
+  text1: string = '';
+
+  // 浮水印文字 1
+  text2: string = '';
+
+  // 浮水印文字 for watermakr dom display
+  watermakrTextArr = [this.text1, this.text2];
 
   constructor(private fb: UntypedFormBuilder) {}
 
-  watermakrTextArr = ['', ''];
-
-  ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      text1: [null],
-      text2: [null],
-    });
-  }
+  ngOnInit(): void {}
 
   /**
    *
@@ -41,6 +46,7 @@ export class AppComponent implements OnInit {
    *
    */
   async takePicture(_sourceType: string) {
+    console.log('拍照');
     // await this.defineCustomElementsPromise();
     const image = await Camera.getPhoto({
       quality: 68,
@@ -53,12 +59,19 @@ export class AppComponent implements OnInit {
     });
 
     // this.workerImage = image.dataUrl;
-    this.workerImage = await compressBase64Image(
+
+    // 更新圖片
+    this.cppatureImage = await compressBase64Image(
       image.dataUrl,
       0.68,
       image.format
     );
 
+    // 更新浮水印文字
+    this.watermakrTextArr = [this.text1, this.text2];
+
+    // 關閉設定drawer
+    this.showSettingDrawer(false);
     // this.workerImage = `data:image/${image.format};base64,${image.base64String}`;
   }
 
@@ -78,11 +91,14 @@ export class AppComponent implements OnInit {
     });
   }
 
-  submitForm(): void {
-    console.log('submit', this.validateForm.value);
+  /**
+   *
+   * 顯示/關閉 設定 Drawer
+   *
+   *
+   */
 
-    const { text1, text2 } = this.validateForm.value;
-
-    this.watermakrTextArr = [text1, text2];
+  showSettingDrawer(isOpen: boolean): void {
+    this.isShowSettingDrawer = isOpen;
   }
 }

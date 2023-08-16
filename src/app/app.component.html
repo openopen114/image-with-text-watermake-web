@@ -4,53 +4,71 @@
     <nz-water-mark
       [nzContent]="watermakrTextArr"
       [nzGap]="[20, 20]"
-      [nzFont]="{ color: 'rgba(245, 34, 25, 0.25)' }"
+      [nzFont]="{ color: 'rgba(245, 34, 25, 0.38)' , fontSize: 18 }"
     >
       <div class="watermaker-area">
-        <img class="img--cover" [src]="workerImage" alt="" />
+        <img class="img--cover" [src]="cppatureImage" alt="" />
       </div>
     </nz-water-mark>
   </div>
 </div>
 
-<!-- 按扭區域 -->
-<div class="btn-area">
-  <button nz-button nzType="primary" (click)="takePicture('CAMERA')" nzBlock>
-    <span nz-icon nzType="camera" nzTheme="outline"></span>
-    相機
-  </button>
+<h1>{{ watermakrTextArr[0] }}</h1>
+<h1>{{ watermakrTextArr[1] }}</h1>
 
-  <button nz-button nzType="primary" (click)="downloadImage()" nzBlock>
-    <span nz-icon nzType="download" nzTheme="outline"></span>
-    下載圖片
-  </button>
-</div>
+<button nz-button nzType="primary" (click)="downloadImage()" nzBlock>
+  <span nz-icon nzType="download" nzTheme="outline"></span>
+  下載圖片
+</button>
 
-<form
-  nz-form
-  [nzLayout]="'inline'"
-  [formGroup]="validateForm"
-  (ngSubmit)="submitForm()"
+<button nz-button nzType="primary" (click)="showSettingDrawer(true)">
+  Open
+</button>
+
+<!-- 設定 drawer -->
+<nz-drawer
+  [nzClosable]="true"
+  [nzVisible]="isShowSettingDrawer"
+  nzPlacement="right"
+  nzTitle="設定"
+  nzWidth="378px"
+  (nzOnClose)="showSettingDrawer(false)"
 >
-  <nz-form-item>
-    <nz-form-control nzErrorTip="浮水印文字 1">
-      <nz-input-group nzPrefixIcon="audit">
-        <input formControlName="text1" nz-input placeholder="浮水印文字 1" />
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control nzErrorTip="浮水印文字 2">
-      <nz-input-group nzPrefixIcon="audit">
-        <input formControlName="text2" nz-input placeholder="浮水印文字 2" />
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control>
-      <button nz-button nzType="primary" [disabled]="!validateForm.valid">
-        設定
+  <ng-container *nzDrawerContent>
+    <div class="setting-drawer-area">
+      <!-- input area-->
+      <div class="input-area">
+        <!-- 浮水印文字 1-->
+        <div class="input-field">
+          <input
+            class="input"
+            [type]="'text'"
+            placeholder="請輸入浮水印文字 1"
+            [(ngModel)]="text1"
+          />
+        </div>
+
+        <!-- 浮水印文字 2-->
+        <div class="input-field">
+          <input
+            class="input"
+            [type]="'text'"
+            placeholder="請輸入浮水印文字 2"
+            [(ngModel)]="text2"
+          />
+        </div>
+      </div>
+
+      <!-- 按扭區域 -->
+      <button
+        nz-button
+        nzType="primary"
+        (click)="takePicture('CAMERA')"
+        nzBlock
+      >
+        <span nz-icon nzType="camera" nzTheme="outline"></span>
+        相機
       </button>
-    </nz-form-control>
-  </nz-form-item>
-</form>
+    </div>
+  </ng-container>
+</nz-drawer>
