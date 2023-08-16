@@ -1,32 +1,38 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import {
   Camera,
   CameraResultType,
   CameraSource,
   CameraDirection,
 } from '@capacitor/camera';
-import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { compressBase64Image } from './Utils/CompressImage.js';
-import html2canvas from 'html2canvas';
-
 import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-
 import download from 'downloadjs';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  @ViewChild('screen') screen: ElementRef;
-  @ViewChild('canvas') canvas: ElementRef;
-  @ViewChild('downloadLink') downloadLink: ElementRef;
-
-  title = 'image-with-text-watermake-web';
-
+export class AppComponent implements OnInit {
   workerImage: string;
+  validateForm!: UntypedFormGroup;
+
+  constructor(private fb: UntypedFormBuilder) {}
+
+  watermakrTextArr = ['', ''];
+
+  ngOnInit(): void {
+    this.validateForm = this.fb.group({
+      text1: [null],
+      text2: [null],
+    });
+  }
 
   /**
    *
@@ -70,23 +76,13 @@ export class AppComponent {
     htmlToImage.toPng(captureElement).then(function (dataUrl) {
       download(dataUrl, 'my-node.png');
     });
+  }
 
-    /*
-    // Select the element that you want to capture
-    const captureElement: HTMLElement = document.querySelector('#capture');
+  submitForm(): void {
+    console.log('submit', this.validateForm.value);
 
-    // Call the html2canvas function and pass the element as an argument
-    html2canvas(captureElement).then((canvas) => {
-      // Get the image data as a base64-encoded string
-      const imageData = canvas.toDataURL('image/png');
+    const { text1, text2 } = this.validateForm.value;
 
-      // Do something with the image data, such as saving it as a file or sending it to a server
-      // For example, you can create an anchor element and trigger a download action
-      const link = document.createElement('a');
-      link.setAttribute('download', 'screenshot.png');
-      link.setAttribute('href', imageData);
-      link.click();
-    });
-    */
+    this.watermakrTextArr = [text1, text2];
   }
 }

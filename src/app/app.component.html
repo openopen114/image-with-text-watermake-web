@@ -2,7 +2,7 @@
 <div class="upper-area">
   <div class="watermaker-area-container" id="capture">
     <nz-water-mark
-      [nzContent]="['Angular', 'NG Ant Design']"
+      [nzContent]="watermakrTextArr"
       [nzGap]="[20, 20]"
       [nzFont]="{ color: 'rgba(245, 34, 25, 0.25)' }"
     >
@@ -25,3 +25,32 @@
     下載圖片
   </button>
 </div>
+
+<form
+  nz-form
+  [nzLayout]="'inline'"
+  [formGroup]="validateForm"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="浮水印文字 1">
+      <nz-input-group nzPrefixIcon="audit">
+        <input formControlName="text1" nz-input placeholder="浮水印文字 1" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="浮水印文字 2">
+      <nz-input-group nzPrefixIcon="audit">
+        <input formControlName="text2" nz-input placeholder="浮水印文字 2" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]="!validateForm.valid">
+        設定
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
