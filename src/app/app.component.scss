@@ -1,24 +1,29 @@
-.watermaker-area-container {
-  width: 857px;
-  height: 540px;
-  // border: 2px solid green;
 
-  .watermaker-area {
-    width: 100%;
-    height: 100%;
-    // border: 2px solid red;
-  }
-}
 
 .upper-area {
   width: 100vw;
   height: 70vh;
   padding: 20px;
+  overflow:scroll;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  // border: 2px solid green;
+
+  .watermaker-area-container {
+    width: 857px;
+    height: 540px;
+    // border: 2px solid green;
+  
+    .watermaker-area {
+      width: 100%;
+      height: 100%;
+      // border: 2px solid red;
+    }
+  }
 }
 
 .setting-btn-area {
