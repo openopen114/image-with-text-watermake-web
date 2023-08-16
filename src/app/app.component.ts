@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
    *
    */
   async takePicture(_sourceType: string) {
-    console.log('拍照');
+    // console.log('拍照');
     // await this.defineCustomElementsPromise();
     const image = await Camera.getPhoto({
       quality: 68,
@@ -83,7 +83,7 @@ export class AppComponent implements OnInit {
    *
    */
   downloadImage() {
-    console.log('downloadImage');
+    // console.log('downloadImage');
 
     const captureElement: HTMLElement = document.querySelector('#capture');
 
@@ -98,7 +98,6 @@ export class AppComponent implements OnInit {
    *
    *
    */
-
   showSettingDrawer(isOpen: boolean): void {
     this.isShowSettingDrawer = isOpen;
 
