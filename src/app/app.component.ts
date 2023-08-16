@@ -14,6 +14,9 @@ import {
   Validators,
 } from '@angular/forms';
 
+
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -88,7 +91,7 @@ export class AppComponent implements OnInit {
     const captureElement: HTMLElement = document.querySelector('#capture');
 
     htmlToImage.toPng(captureElement).then(function (dataUrl) {
-      download(dataUrl, 'my-node.png');
+      download(dataUrl, `pic_${moment().format("YYYYMMDD_HHmmss")}.png`);
     });
   }
 
