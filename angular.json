@@ -125,6 +125,14 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/image-with-text-watermake-web/",
+            "name": "openopen114",
+            "email": "openopen114@gmail.com"
+          }
         }
       }
     }
