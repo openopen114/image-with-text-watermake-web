@@ -1,13 +1,15 @@
 <!-- upper watermake are -->
 <div class="upper-area">
-
-
   <!-- 圖片加上浮水印區  nz watermark area -->
-  <div class="watermaker-area-container" id="capture" *ngIf="cppatureImage != undefined">
+  <div
+    class="watermaker-area-container"
+    id="capture"
+    *ngIf="cppatureImage != undefined"
+  >
     <nz-water-mark
       [nzContent]="watermakrTextArr"
       [nzGap]="[20, 20]"
-      [nzFont]="{ color: 'rgba(245, 34, 25, 0.38)', fontSize: 18 }"
+      [nzFont]="{ color: 'rgba(245, 245, 245, 0.28)', fontSize: 18 }"
     >
       <div class="watermaker-area">
         <img class="img--contain" [src]="cppatureImage" alt="" />
@@ -15,21 +17,19 @@
     </nz-water-mark>
   </div>
 </div>
- 
+
 <div class="container">
   <button
-  nz-button
-  nzType="primary"
-  (click)="downloadImage()"
-  nzBlock
-  nzShape="round"
->
-  <span nz-icon nzType="download" nzTheme="outline"></span>
-  下載圖片
-</button>
+    nz-button
+    nzType="primary"
+    (click)="downloadImage()"
+    nzBlock
+    nzShape="round"
+  >
+    <span nz-icon nzType="download" nzTheme="outline"></span>
+    下載圖片
+  </button>
 </div>
-
-
 
 <!-- 設定按鈕 -->
 <div class="setting-btn-area">

@@ -24,16 +24,15 @@ import * as moment from 'moment';
 export class AppComponent implements OnInit {
   // 拍攝的相片
   cppatureImage: string =
-    'https://images.unsplash.com/photo-1508311603478-ce574376c3cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3542&q=80';
-
+    'https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80';
   // 是否顯示設定 drawer
   isShowSettingDrawer = false;
 
   // 浮水印文字 1
-  text1: string = '';
+  text1: string = 'openopen114';
 
   // 浮水印文字 1
-  text2: string = '';
+  text2: string = 'watermark';
 
   // 浮水印文字 for watermakr dom display
   watermakrTextArr = [this.text1, this.text2];
